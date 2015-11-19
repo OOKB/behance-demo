@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>An Intro to JS Templating</title>
+  </head>
+
+  <body>
+    <header>Menu, title, etc. TK <a href="index.html">[HOME]</a> <a href="about.html" class="active">[ABOUT]</a></header>
+
+    <main>
+      <div class="container">
+        <div id="behance-magix" class="clearfix">
+          <!-- insert some HTML via magic JS -->
+
+          <!-- this is the template that each behance thing with use to print to the browser -->
+          <script id="user-info" type="text/template">
+            {{#user}}
+            <div>
+              <img src="{{images.276}}" />
+              <ul class="info clearfix list-reset">
+                <li class="name"><h2>{{first_name}} {{last_name}}</h2></li>
+                <li class="occupation"><p>{{occupation}}</p></li>
+                <li class="company"><p>{{company}}</p></li>
+              </ul>
+              <div class="about">
+                <p>{{sections.About}}</p>
+              </div>
+              <ul>
+                <li><p><a href="{{website}}">{{website}}</a></p></li>
+                {{#social_links}}
+                  <li>
+                    <p><a href="{{url}}">{{service_name}}</a></p>
+                  </li>
+                {{/social_links}}
+              </ul>
+            </div>
+            {{/user}}
+          </script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer>copyright, etc. tk</footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- this is jquery, needed for a bunch of stuff -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- this is mustache, required for the templating to happen -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
+    <script>
+      var userName = 'kristianbjornard'
+      var apiKey   = '5T8WWYiQqGy7sJV1sEQIdO2k8CDNDQS7'
+
+      var url = 'https://www.behance.net/v2/users/' + userName + '/?api_key=' + apiKey +'&callback=?';
+
+      $.getJSON(url, function(data) {
+        console.log('connected to ' + url + '.');
+        //mustache for projects
+        var template = $('#user-info').html();
+        var info = Mustache.to_html(template, data);
+        $('#behance-magix').html(info);
+      });
+
+    </script>
+
+  </body>
+</html>

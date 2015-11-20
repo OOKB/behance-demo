@@ -66,6 +66,13 @@ nav ul li a {
     text-decoration: none;
 }
 
+nav ul li a:hover,
+nav ul li a:active {
+    background: goldenrod;
+    color: lightyellow;
+    text-decoration: none;
+}
+
 @media (min-width: 50em) {
     body { padding-top: 100px; }
 
@@ -85,6 +92,11 @@ nav ul li a {
         position: static;
         padding-bottom: 0;
         background: transparent;
+    }
+
+    nav ul li {
+        float:left;
+        border-bottom: none;
     }
 
     header button.toggle {

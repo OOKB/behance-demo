@@ -52,11 +52,12 @@
     <!-- this is mustache, required for the templating to happen -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
-    <script>
-      var userName = 'kristianbjornard'
-      var apiKey   = '5T8WWYiQqGy7sJV1sEQIdO2k8CDNDQS7'
+    <script src="mobilemenu.js"></script>
+    <script src="behance.js"></script>
 
-      var url = 'https://www.behance.net/v2/users/' + userName + '/?api_key=' + apiKey +'&callback=?';
+    <script>
+      // about related
+      var url = 'https://api.behance.net/v2/users/' + userName + '/?api_key=' + apiKey +'&callback=?';
 
       $.getJSON(url, function(data) {
         console.log('connected to ' + url + '.');
@@ -65,7 +66,6 @@
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
       });
-
     </script>
 
   </body>

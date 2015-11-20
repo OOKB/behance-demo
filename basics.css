@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,800,800italic');
+
+@font-face {
+    font-family: '20_dbregular';
+    src: url('ff/20db/20db-webfont.woff2') format('woff2'),
+         url('ff/20db/20db-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 700;
+}

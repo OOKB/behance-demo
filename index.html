@@ -2,35 +2,50 @@
 
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>An Intro to JS Templating</title>
 
-    <!-- basic example from google webfonts -->
-    <link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
-
-    <style>
-      body {
-        font-family: 'PT Mono', monaco, monospace;
-      }
-    </style>
-
     <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
 
+    <link href="mobile-menu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="grid.css" />
+    <link rel="stylesheet" type="text/css" href="basics.css" />
   </head>
 
   <body>
-    <header>Menu, title, etc. TK <a href="index.html">[HOME]</a> <a href="about.html" class="active">[ABOUT]</a></header>
+        <header>
+            <nav>
+
+                <!-- this is our menu that we'll show/hide on skinny screens... -->
+                <ul>
+                    <li><a href="#one">First object</a></li>
+                    <li><a href="#two">Second Thing</a></li>
+                    <li><a href="#three">A Third Item</a></li>
+                </ul>
+
+                <!-- This HTML makes us a little button to show and hide -->
+                <button class="toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </nav>
+        </header>
 
     <main>
       <div class="container">
         <h1>Some Sort of Title</h1>
         <div id="behance-magix" class="clearfix">
           <!-- insert some HTML via magic JS -->
+            <img src="https://unsplash.it/400/300/?random" />
+            <p>This will be erased when javascript draws our new content.</p>
 
           <!-- this is the template that each behance thing with use to print to the browser -->
-          <script id="behance-project" type="text/template">
+          <script id="blah" type="text/template">
             {{#projects}}
-            <div class="project" data-project-id="{{id}}">
+            <div class="project three columns" id="be-{{id}}" data-project-id="{{id}}">
               <a href="{{url}}">
                 <img src="{{covers.404}}" alt="{{name}}" />
                 <ul class="info clearfix list-reset">
@@ -60,15 +75,17 @@
     <!-- this is mustache, required for the templating to happen -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
+    <script src="mobilemenu.js"></script>
+
     <script>
       var userName = 'kristianbjornard'
-      var apiKey   = '5T8WWYiQqGy7sJV1sEQIdO2k8CDNDQS7'
+      var apiKey   = 'yJ3G6XhgD6Ofb14Rx0Evosxo6bpCnKfY'
       var url = 'https://www.behance.net/v2/users/' + userName + '/projects/?api_key=' + apiKey +'&callback=?';
 
       $.getJSON(url, function(data) {
         console.log('connected to ' + url + '.');
         //mustache for projects
-        var template = $('#behance-project').html();
+        var template = $('#blah').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
       });

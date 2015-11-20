@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container,
+.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row::after,
+.group::after,
+.grouped::after,
+.clearfix::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+body { background-color: antiquewhite; }
+
+@media (min-width: 30em) {
+    body { background-color: aquamarine; }
+    .container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 50em) {
+    body { background-color: lightcyan; }
+    .container {
+        max-width: 1200px;
+    }
+
+    .row,
+    .group,
+    .grouped {
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+
+    .column,
+    .columns {
+        /* this will make things a column */
+        float: left;
+        padding-left: 1rem; /* make this half of what you want your gutters to be */
+        padding-right: 1rem; /* make this half of what you want your gutters to be */
+    }
+
+    /* these styles declare column widths */
+    .one      { width: calc(100% / 12 * 01); }
+    .two      { width: calc(100% / 12 * 02); }
+    .three    { width: calc(100% / 12 * 03); }
+    .four     { width: calc(100% / 12 * 04); }
+    .five     { width: calc(100% / 12 * 05); }
+    .six      { width: calc(100% / 12 * 06); }
+    .seven    { width: calc(100% / 12 * 07); }
+    .eight    { width: calc(100% / 12 * 08); }
+    .nine     { width: calc(100% / 12 * 09); }
+    .ten      { width: calc(100% / 12 * 10); }
+    .eleven   { width: calc(100% / 12 * 11); }
+    .twelve   { width: calc(100% / 12 * 12); }
+
+    /* these styles declare column offsets */
+    .offset-by-one      { margin-left: calc(100% / 12 * 01); }
+    .offset-by-two      { margin-left: calc(100% / 12 * 02); }
+    .offset-by-three    { margin-left: calc(100% / 12 * 03); }
+    .offset-by-four     { margin-left: calc(100% / 12 * 04); }
+    .offset-by-five     { margin-left: calc(100% / 12 * 05); }
+    .offset-by-six      { margin-left: calc(100% / 12 * 06); }
+    .offset-by-seven    { margin-left: calc(100% / 12 * 07); }
+    .offset-by-eight    { margin-left: calc(100% / 12 * 08); }
+    .offset-by-nine     { margin-left: calc(100% / 12 * 09); }
+    .offset-by-ten      { margin-left: calc(100% / 12 * 10); }
+    .offset-by-eleven   { margin-left: calc(100% / 12 * 11); }
+    .offset-by-twelve   { margin-left: calc(100% / 12 * 12); }
+}
+
+
+
+

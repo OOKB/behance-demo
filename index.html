@@ -102,19 +102,23 @@
             var template = $('#project-page').html();
             var info = Mustache.to_html(template, data);
             $('#dynamic-pages').html(info);
+
+            $('.project-page button.close').click(function() {
+              $(this).parent().hide();
+            });
           });
         });
       });
-
     </script>
 
     <script id="project-page" type="text/template">
       <div class="project-page" id="project-{{project.id}}">
         <div class="container">
-          <img src="{{project.covers.404}}" alt="{{project.name}}" />
+          <img src="{{project.covers.original}}" alt="{{project.name}}" />
           <h1>{{project.name}}</h1>
           <p>{{project.description}}</p>
         </div>
+        <button class="close">X</button>
       </div>
     </script>
 

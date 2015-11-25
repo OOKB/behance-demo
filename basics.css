@@ -1,26 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,800,800italic');
 
-@font-face {
-  font-family: '20_dbregular';
-  src: url('ff/20db/20db-webfont.woff2') format('woff2'),
-       url('ff/20db/20db-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   font-family: 'Open Sans', helvetica, arial, sans-serif;
+  line-height: 1.25;
+  background: rgba(132,132,120,1);
+  color: rgba(47,41,38,1);
+  padding-top: 3em;
 }
 
 h1 {
-  font-family: '20_dbregular', helvetica, arial, sans-serif;
   font-size: 3em;
+  font-weight: 800;
 }
 
 .project {
-  height: 390px;
+  margin-bottom: 2em;
 }
 
+.project a.wrapping {
+  color: rgba(47,41,38,1);
+  text-decoration: none;
+  display: block;
+}
+
+.project h2 {
+  font-weight: 400;
+  font-size: 1.25em;
+  line-height: 1.1;
+}
+
+
+
+
+
+
+
+/*******/
 #dynamic-pages .project-page {
   position: fixed;
   top:0;

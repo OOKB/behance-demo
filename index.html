@@ -8,35 +8,32 @@
     <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
 
-    <link href="mobile-menu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="mobile-menu.css" />
     <link rel="stylesheet" type="text/css" href="grid.css" />
     <link rel="stylesheet" type="text/css" href="basics.css" />
   </head>
 
   <body>
-        <header>
-            <nav>
-
-                <!-- this is our menu that we'll show/hide on skinny screens... -->
-                <ul>
-                    <li><a href="index.html">Home?</a></li>
-                    <li><a href="#two">Second Thing</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-
-                <!-- This HTML makes us a little button to show and hide -->
-                <button class="toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-            </nav>
-        </header>
+    <header>
+      <nav>
+        <!-- this is our menu that we'll show/hide on skinny screens... -->
+        <ul>
+          <li><a href="index.html">Home?</a></li>
+          <li><a href="#two">Second Thing</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <!-- This HTML makes us a little button to show and hide -->
+        <button class="toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
     <main>
       <div class="container">
-        <h1>Some Sort of Title</h1>
+        <h1>Work.</h1>
         <div id="behance-magix" class="group">
           <!-- insert some HTML via magic JS -->
             <img src="https://unsplash.it/400/300/?random" />
@@ -46,11 +43,11 @@
           <script id="project-cards" type="text/template">
             {{#projects}}
             <div class="project three columns" id="b{{id}}">
-              <a href="#{{id}}" data-project-id="{{id}}">
+              <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
                 <img src="{{covers.404}}" alt="{{name}}" />
-                <ul class="info clearfix list-reset">
-                  <li class="name"><h2>{{name}}</h2></li>
-                </ul>
+                <div class="info">
+                  <h2 class="name">{{name}}</h2>
+                </div>
               </a>
             </div>
             {{/projects}}
@@ -83,14 +80,33 @@
     <script src="behance.js"></script>
 
     <script>
-      var url = 'https://api.behance.net/v2/users/' + userName + '/projects/?api_key=' + apiKey +'&callback=?';
+      var url = 'https://api.behance.net/v2/users/' + userName + '/projects/?api_key=' + apiKey +'&per_page=25&callback=?';
+      /* some issue where no more than 25 can be returned at a time, there are ways to ask for more? https://help.behance.net/hc/communities/public/questions/202357274-Number-of-Behance-API-request-results-limited-to-25- */
       console.log('connected to ' + url + '.');
 
+      var matchingHeights = function() {
+        var pHeight = 0;
+        $('.project').each(function() {
+          var projectID  = $(this).find('a.wrapping').attr('data-project-id');
+          pHeight = pHeight > $(this).height() ? pHeight : $(this).height();
+          console.log('Number ' + projectID + ' is ' + pHeight + ' px tall!');
+        });
+        $('.project').each(function() {
+          $(this).height(pHeight);
+        });
+      }
+
       $.getJSON(url, function(data) {
+
         //mustache for projects
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
+
+        // try to get all the things printing out @ the same height.
+        $('.project img').load(function() {
+          matchingHeights();
+        });
 
         $('.project a').click(function() {
          var projectID  = $(this).attr('data-project-id');
@@ -109,6 +125,7 @@
           });
         });
       });
+
     </script>
 
     <script id="project-page" type="text/template">

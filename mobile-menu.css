@@ -1,105 +1,122 @@
 * {
-    box-sizing: border-box;
-/*    font-family: helvetica, arial, sans-serif;*/
+  box-sizing: border-box;
 }
 
 header nav ul {
-    display: none;
+  display: none;
 }
 
 header button.toggle {
-    position: fixed;
-    bottom: 1em;
-    left: 1em;
-    background: lightgreen;
-    height: 4em;
-    width: 4em;
-    z-index: 99999999;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.25);
-    outline: 0;
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  background: rgba(94, 101, 101, 1);
+  height: 4em;
+  width: 4em;
+  z-index: 99999999;
+  border: 1px solid rgba(47, 41, 38, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(47, 41, 38, .33);
+  outline: 0;
 }
 
 header button.toggle:active {
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
-    background: forestgreen;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+  background: rgba(94, 101, 101, 1);
 }
 
 header button.toggle:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .toggle span {
-    display: block;
-    height: .25em;
-    background-color: forestgreen;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: .25em;
-    margin-bottom: .25em;
-    border-radius: .25em;
+  display: block;
+  height: .25em;
+  background-color: rgba(47, 41, 38, 1);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: .25em;
+  margin-bottom: .25em;
+  border-radius: .25em;
 }
 
 header nav ul {
-    position: fixed;
-    bottom:0;
-    left:  0;
-    right: 0;
-    z-index: 99999998;
-    background: lightgreen;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 4.25em;
-    border-top: 1px solid forestgreen;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999998;
+  background: rgba(94, 101, 101, 1);
+  list-style: none;
+  margin: 0;
+  padding: 0 0 4.25em;
+  border-top: 1px solid rgba(47, 41, 38, 1);
 }
 
 nav ul li {
-    border-bottom: 1px solid forestgreen;
+  border-bottom: 1px solid rgba(47, 41, 38, 1);
 }
 
 nav ul li a {
-    display:block;
-    padding: .5em;
-    color: forestgreen;
-    text-decoration: none;
+  color: rgba(47, 41, 38, 1);
+  display: block;
+  font-weight: 400;
+  padding: .5em;
+  text-decoration: none;
 }
 
 nav ul li a:hover,
 nav ul li a:active {
-    background: goldenrod;
-    color: lightyellow;
-    text-decoration: none;
+  background: rgba(236, 64, 121, 1);
+  color: white;
+  text-decoration: none;
 }
 
 @media (min-width: 50em) {
-    body { padding-top: 100px; }
+  header {
+    position: static;
+    border: none;
+    z-index: 99999999;
+  }
 
-    header {
-        position: fixed;
-        top:0;
-        left:0;
-        right:0;
-        background: lightgreen;
-        border-bottom: 1px solid darkgreen;
-        box-shadow: 0 0 10px 0 rgba(0,0,0,.25);
-        z-index: 99999999;
-    }
+  header nav ul {
+    background: transparent;
+    border: none;
+    box-shadow: 0 0 10px 0 rgba(47, 41, 38, .33);
+    display: block;
+    padding-bottom: 0;
+    /**/
+    top: 3em;
+    right: 3em;
+    bottom: initial;
+    left: initial;
+  }
 
-    header nav ul {
-        display: block;
-        position: static;
-        padding-bottom: 0;
-        background: transparent;
-    }
+  nav ul li {
+    float: left;
+    border-bottom: none;
+  }
 
-    nav ul li {
-        float:left;
-        border-bottom: none;
-    }
+  header button.toggle {
+    display: none;
+  }
 
-    header button.toggle {
-        display: none;
-    }
+  nav ul li a {
+    background: rgba(94, 101, 101, 1);
+    border: 1px solid rgba(47, 41, 38, 1);
+    color: rgba(47, 41, 38, 1);
+    display: block;
+    font-weight: 400;
+    padding: .75em 2em;
+    text-decoration: none;
+  }
+
+  nav ul li a {
+    border-right: none;
+  }
+
+  nav ul li:last-child a {
+    border-right: 1px solid rgba(47, 41, 38, 1);
+  }
 }

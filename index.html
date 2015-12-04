@@ -6,10 +6,9 @@
     <title>An Intro to JS Templating</title>
 
     <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="mobile-menu.css" />
-    <link rel="stylesheet" type="text/css" href="grid.css" />
+<!--    <link rel="stylesheet" type="text/css" href="grid.css" />-->
     <link rel="stylesheet" type="text/css" href="basics.css" />
   </head>
 
@@ -62,6 +61,25 @@
     <div id="dynamic-pages">
       <!-- individual pages will appear to "print" here -->
     </div>
+    <!-- this will print in the above "dynamic-pages" area -->
+    <script id="project-page" type="text/template">
+      <div class="project-page" id="project-{{project.id}}">
+        <div class="container">
+          <h1>{{project.name}}</h1>
+          <p>{{project.description}}</p>
+
+          <ul class="modules-list list-reset">
+            {{#project.modules}}
+              <li class="module {{type}}">
+                <img src="{{sizes.max_1200}}" />
+              </li>
+            {{/project.modules}}
+          </ul>
+
+        </div>
+        <button class="close">X</button>
+      </div>
+    </script>
 
     <!-- All your javascript (other than typekit related stuff) -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -126,17 +144,6 @@
         });
       });
 
-    </script>
-
-    <script id="project-page" type="text/template">
-      <div class="project-page" id="project-{{project.id}}">
-        <div class="container">
-          <img src="{{project.covers.original}}" alt="{{project.name}}" />
-          <h1>{{project.name}}</h1>
-          <p>{{project.description}}</p>
-        </div>
-        <button class="close">X</button>
-      </div>
     </script>
 
   </body>

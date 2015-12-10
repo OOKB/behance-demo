@@ -35,6 +35,9 @@ img {
 }
 
 @media (min-width: 50em) {
+  .left { float: left; }
+  .right { float: right; }
+
   .container {
     max-width: 1200px;
   }

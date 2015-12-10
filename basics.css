@@ -29,6 +29,11 @@ h1 {
   line-height: 1.1;
 }
 
+a {
+  color: rgba(47,41,38,1);
+  text-decoration: none;
+}
+
 /*******/
 #dynamic-pages .project-page {
   color: white;
@@ -60,6 +65,16 @@ h1 {
   border: none;
   color: rgba(47,41,38,1);
 }
+
+.project-page a {
+  color: white;
+  text-decoration: underline;
+}
+.project-page a:hover {
+  background: rgba(236, 64, 121, 1);
+  text-decoration: none;
+}
+
 
 .list-reset {
   list-style: none;

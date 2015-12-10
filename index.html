@@ -44,7 +44,7 @@
             <div class="project three columns" id="b{{id}}">
               <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
                 <img src="{{covers.404}}" alt="{{name}}" />
-                <h2 class="name">{{name}}</h2>
+                <h2 class="name" style="display:none;">{{name}}</h2>
               </a>
             </div>
             {{/projects}}
@@ -117,21 +117,6 @@
       /* some issue where no more than 25 can be returned at a time, there are ways to ask for more? https://help.behance.net/hc/communities/public/questions/202357274-Number-of-Behance-API-request-results-limited-to-25- */
       console.log('connected to ' + url + '.');
 
-
-
-      /** something to go through a set of things and find the tallest one, and then make them all the same height **/
-      var matchingHeights = function() {
-        var pHeight = 0;
-        $('.project').each(function() {
-          var projectID  = $(this).find('a.wrapping').attr('data-project-id');
-          pHeight = pHeight > $(this).height() ? pHeight : $(this).height();
-          console.log('Number ' + projectID + ' is ' + pHeight + ' px tall!');
-        });
-        $('.project').each(function() {
-          $(this).height(pHeight);
-        });
-      }
-
       /** the stuff for printing things out **/
       $.getJSON(url, function(data) {
 
@@ -140,13 +125,6 @@
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
-
-        // try to get all the things printing out @ the same height.
-        // need to call this only after the JSON to html templating
-        // has already happened....
-        $('.project img').load(function() {
-          matchingHeights();
-        });
 
         // this allows for the "page" to be created
         // for each project when you click its thumbnail

@@ -8,7 +8,7 @@
     <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="mobile-menu.css" />
-<!--    <link rel="stylesheet" type="text/css" href="grid.css" />-->
+    <link rel="stylesheet" type="text/css" href="grid.css" />
     <link rel="stylesheet" type="text/css" href="basics.css" />
   </head>
 
@@ -35,8 +35,8 @@
         <h1>Work.</h1>
         <div id="behance-magix" class="group">
           <!-- insert some HTML via magic JS -->
-            <img src="https://unsplash.it/400/300/?random" />
-            <p>This will be erased when javascript draws our new content.</p>
+            <img src="https://unsplash.it/900/200/?random" />
+            <p>Find more of my work on <a href="https://www.behance.net/kristianbjornard">Behance.net</a></p>
 
           <!-- this is the template that each behance thing with use to print to the browser -->
           <script id="project-cards" type="text/template">
@@ -44,9 +44,7 @@
             <div class="project three columns" id="b{{id}}">
               <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
                 <img src="{{covers.404}}" alt="{{name}}" />
-                <div class="info">
-                  <h2 class="name">{{name}}</h2>
-                </div>
+                <h2 class="name">{{name}}</h2>
               </a>
             </div>
             {{/projects}}
@@ -56,7 +54,19 @@
       </div>
     </main>
 
-    <footer>copyright, or footer-y stuff, etc. tk</footer>
+    <footer>
+      <div class="inner pad group">
+        <p class="four columns">
+          ©2015 Kristian Bjørnard — thanks to Behance for your API, thanks to Mustache.js for the cool templating. This same methodology would work for any API that returns JSON from restful URLs...... tumblr, facebook, etc.
+        </p>
+        <p class="four columns">
+          This page is an experiment in dynamic rendering. All the thumbnails you see are being rendered directly in your browser on page load from a Behance profile. More to come. I'll be turning this into a git repo soon so that anyone can easily build a basic portfolio site with minimum effort...
+        </p>
+        <p class="four columns">
+          Create Anywhere, Publish Everywhere /// Pure Content!
+        </p>
+      </div>
+    </footer>
 
     <div id="dynamic-pages">
       <!-- individual pages will appear to "print" here -->
@@ -65,19 +75,24 @@
     <script id="project-page" type="text/template">
       <div class="project-page" id="project-{{project.id}}">
         <div class="container">
-          <h1>{{project.name}}</h1>
-          <p>{{project.description}}</p>
+          <div class="group">
+            <div class="eight columns offset-by-two">
 
-          <ul class="modules-list list-reset">
-            {{#project.modules}}
-              <li class="module {{type}}">
-                <img src="{{sizes.max_1200}}" />
-              </li>
-            {{/project.modules}}
-          </ul>
+              <h1>{{project.name}}</h1>
+              <p>{{project.description}}</p>
 
+              <ul class="modules-list list-reset">
+                {{#project.modules}}
+                  <li class="module {{type}}">
+                    <img src="{{sizes.max_1200}}" />
+                  </li>
+                {{/project.modules}}
+              </ul>
+
+            </div>
+          </div>
         </div>
-        <button class="close">X</button>
+        <button class="close"><i class="fa fa-times fa-2x"></i></button>
       </div>
     </script>
 
@@ -102,6 +117,9 @@
       /* some issue where no more than 25 can be returned at a time, there are ways to ask for more? https://help.behance.net/hc/communities/public/questions/202357274-Number-of-Behance-API-request-results-limited-to-25- */
       console.log('connected to ' + url + '.');
 
+
+
+      /** something to go through a set of things and find the tallest one, and then make them all the same height **/
       var matchingHeights = function() {
         var pHeight = 0;
         $('.project').each(function() {
@@ -114,31 +132,46 @@
         });
       }
 
+      /** the stuff for printing things out **/
       $.getJSON(url, function(data) {
 
         //mustache for projects
+        //this prints the project thumbnails
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
 
         // try to get all the things printing out @ the same height.
+        // need to call this only after the JSON to html templating
+        // has already happened....
         $('.project img').load(function() {
           matchingHeights();
         });
 
+        // this allows for the "page" to be created
+        // for each project when you click its thumbnail
         $('.project a').click(function() {
-         var projectID  = $(this).attr('data-project-id');
-         var projectUrl = 'https://api.behance.net/v2/projects/' + projectID + '/?api_key=' + apiKey +'&callback=?';
-         console.log('trying to show ' + projectUrl + '.');
+          var projectID  = $(this).attr('data-project-id');
+          var projectUrl = 'https://api.behance.net/v2/projects/' + projectID + '/?api_key=' + apiKey +'&callback=?';
+          console.log('trying to show ' + projectUrl + '.');
+          $('body').addClass('stop-scrolling');
+          console.log('body should stop scrolling and only overlay should scroll');
 
           $.getJSON(projectUrl, function(data) {
-            //mustache for projects
+            //mustache for project page overlay
             var template = $('#project-page').html();
             var info = Mustache.to_html(template, data);
             $('#dynamic-pages').html(info);
 
             $('.project-page button.close').click(function() {
               $(this).parent().hide();
+              $('body').removeClass('stop-scrolling');
+              console.log('overlay should go away and body should go back to scrolling');
+            });
+            $('.project-page').click(function() {
+              $(this).hide();
+              $('body').removeClass('stop-scrolling');
+              console.log('overlay should go away and body should go back to scrolling');
             });
           });
         });

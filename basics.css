@@ -31,16 +31,17 @@ h1 {
 
 /*******/
 #dynamic-pages .project-page {
+  color: white;
   position: fixed;
   top:0;
   right:0;
   bottom:0;
   left:0;
   z-index: 9999999999;
-  background-color: rgba(222,222,222,.9);
+  background-color: rgba(47,41,38,.9);
   overflow-y: auto;
   padding: 3em;
-  border: 1em solid gray;
+  border: 1em solid rgba(132,132,120,1);
 }
 
 #dynamic-pages img {
@@ -55,6 +56,23 @@ h1 {
   height: 3em;
   width: 3em;
   border-radius: 50%;
-  background: gray;
+  background: rgba(132,132,120,1);
   border: none;
+  color: rgba(47,41,38,1);
+}
+
+.list-reset {
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+
+/* try to keep body from scrolling in the background */
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.inner.pad {
+  padding: 1em;
 }

@@ -61,25 +61,41 @@
       </div>
     </main>
 
-    <footer>copyright, etc. tk</footer>
+    <footer>
+      <div class="inner pad group">
+        <p class="four columns">
+          ©<span class="year dynamic">2016</span> Kristian Bjørnard — thanks to Behance for your API, thanks to Mustache.js for the cool templating. This same methodology would work for any API that returns JSON from restful URLs...... tumblr, facebook, etc.
+        </p>
+        <p class="four columns">
+          This page is an experiment in dynamic rendering. All the thumbnails you see are being rendered directly in your browser on page load from a Behance profile. More to come. I'll be turning this into a git repo soon so that anyone can easily build a basic portfolio site with minimum effort...
+        </p>
+        <p class="four columns">
+          Create Anywhere, Publish Everywhere /// Pure Content!
+        </p>
+      </div>
+    </footer>
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- this is jquery, needed for a bunch of stuff -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- this is mustache, required for the templating to happen -->
+    <script src="mobilemenu.js"></script>
+    <script>
+      // dynamically update the year in the footer (not the best idea, but this works!...)
+      var d = new Date();
+      var year = d.getFullYear();
+      console.log('It is' + year + '.');
+      $('footer .year.dynamic').html(year);
+    </script>
+
+    <!-- this is mustache.js, required for the templating to happen -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
-    <script src="mobilemenu.js"></script>
     <script src="behance.js"></script>
-
     <script>
       // about related
-      var url = 'https://api.behance.net/v2/users/' + userName + '/?api_key=' + apiKey +'&callback=?';
-
-      $.getJSON(url, function(data) {
-        console.log('connected to ' + url + '.');
+      $.getJSON(userUrl, function(data) {
         //mustache for projects
         var template = $('#user-info').html();
         var info = Mustache.to_html(template, data);

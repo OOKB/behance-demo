@@ -75,7 +75,6 @@ a {
   text-decoration: none;
 }
 
-
 .list-reset {
   list-style: none;
   margin:0;
@@ -90,4 +89,8 @@ a {
 
 .inner.pad {
   padding: 1em;
+}
+
+img.text, image.video {
+  display: none;
 }

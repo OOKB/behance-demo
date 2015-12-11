@@ -6,6 +6,10 @@ body {
   background: rgba(132,132,120,1);
   color: rgba(47,41,38,1);
   padding-top: 3em;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -93,4 +97,10 @@ a {
 
 img.text, image.video {
   display: none;
+}
+
+#about.stripe {
+  background: rgba(94, 101, 101, 1);
+  padding: 2em 0;
+  margin: 2em 0 ;
 }

@@ -31,27 +31,63 @@
     </header>
 
     <main>
-      <div class="container">
-        <h1>Work.</h1>
-        <div id="behance-magix" class="group">
-          <!-- insert some HTML via magic JS -->
-            <img src="https://unsplash.it/900/200/?random" />
-            <p>Find more of my work on <a href="https://www.behance.net/kristianbjornard">Behance.net</a></p>
+      <section id="work" class="stripe">
+        <div class="container">
+          <h1>Work.</h1>
+          <div id="behance-magix-work" class="group">
+            <!-- insert some HTML via magic JS -->
+              <img src="https://unsplash.it/900/200/?random" />
+              <p>Find more of my work on <a href="https://www.behance.net/kristianbjornard">Behance.net</a></p>
 
-          <!-- this is the template that each behance thing with use to print to the browser -->
-          <script id="project-cards" type="text/template">
-            {{#projects}}
-            <div class="project three columns" id="b{{id}}">
-              <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
-                <img src="{{covers.404}}" alt="{{name}}" />
-                <h2 class="name" style="display:none;">{{name}}</h2>
-              </a>
-            </div>
-            {{/projects}}
-          </script>
+            <!-- this is the template that each behance thing with use to print to the browser -->
+            <script id="project-cards" type="text/template">
+              {{#projects}}
+              <div class="project three columns" id="b{{id}}">
+                <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
+                  <img src="{{covers.404}}" alt="{{name}}" />
+                  <h2 class="name" style="display:none;">{{name}}</h2>
+                </a>
+              </div>
+              {{/projects}}
+            </script>
 
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section id="about" class="stripe">
+        <div class="container">
+          <div id="behance-magix-about">
+            <!-- insert some HTML via magic JS -->
+
+            <!-- this is the template that each behance thing with use to print to the browser -->
+            <script id="user-info" type="text/template">
+              {{#user}}
+              <div class="group">
+                <img class="three columns" src="{{images.276}}" />
+                <ul class="info list-reset three columns">
+                  <li class="name"><h2>{{first_name}} {{last_name}}</h2></li>
+                  <li class="occupation"><p>{{occupation}}</p></li>
+                  <li class="company"><p>{{company}}</p></li>
+                </ul>
+                <div class="about six columns ">
+                  <p>{{sections.About}}</p>
+                </div>
+                <ul class="three columns offset-by-three">
+                  <li><p><a href="{{website}}">{{website}}</a></p></li>
+                  {{#social_links}}
+                    <li>
+                      <p><a href="{{url}}">{{service_name}}</a></p>
+                    </li>
+                  {{/social_links}}
+                </ul>
+              </div>
+              {{/user}}
+            </script>
+
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -117,7 +153,7 @@
       // dynamically update the year in the footer (not the best idea, but this works!...)
       var d = new Date();
       var year = d.getFullYear();
-      console.log('It is ' + year + '.');
+      console.log('It is' + year + '.');
       $('footer .year.dynamic').html(year);
     </script>
 
@@ -136,7 +172,7 @@
         //this prints the project thumbnails
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
-        $('#behance-magix').html(info);
+        $('#behance-magix-work').html(info);
 
         // this allows for the "page" to be created
         // for each project when you click its thumbnail
@@ -170,14 +206,13 @@
     </script>
 
     <script>
-      // @return {integer} a random int between min and max
-      function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
-
-      var numberForBrooke = getRandomInt(1,365);
-      console.log(numberForBrooke);
+      // about related
+      $.getJSON(userUrl, function(data) {
+        //mustache for projects
+        var template = $('#user-info').html();
+        var info = Mustache.to_html(template, data);
+        $('#behance-magix-about').html(info);
+      });
     </script>
-
   </body>
 </html>

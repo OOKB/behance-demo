@@ -3,6 +3,6 @@ Using Behance as a content management sysytem... basically templating and stylin
 
 More description and instructions for how to use forthcoming.
 
-current demos:
-http://behance.ookb.co/
+current demos:  
+http://behance.ookb.co/  
 http://www.connormuething.com/

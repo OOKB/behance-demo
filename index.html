@@ -18,28 +18,27 @@
     </header>
 
     <main>
-      <div class="container">
-        <h1>Work.</h1>
-        <div id="behance-magix">
-          <!-- insert some HTML via magic JS -->
-            <img src="https://unsplash.it/400/300/?random" />
-            <p>This will be erased when javascript draws our new content.</p>
+      <h1>Work.</h1>
+      <div id="behance-magix">
+        <!-- insert some HTML via magic JS -->
+        <!-- this shows something here even if JS doesn't load -->
+        <img src="https://unsplash.it/400/300/?random" />
+        <p>This will be erased when javascript draws our new content. But, you can also put other things here incase the behance API is down or for some other reason the javascript doesn't run/load.</p>
 
-          <!-- this is the template that each behance thing with use to print to the browser -->
-          <script id="project-cards" type="text/template">
-            {{#projects}}
-            <div class="project" id="b{{id}}">
-              <a href="#{{id}}" data-project-id="{{id}}">
-                <img src="{{covers.404}}" alt="{{name}}" />
-                <div class="info">
-                  <h2 class="name">{{name}}</h2>
-                </div>
-              </a>
-            </div>
-            {{/projects}}
-          </script>
+        <!-- this is the template that each behance thing with use to print to the browser -->
+        <script id="project-cards" type="text/template">
+          {{#projects}}
+          <div class="project" id="b{{id}}">
+            <a href="#{{id}}" data-project-id="{{id}}">
+              <img src="{{covers.404}}" alt="{{name}}" />
+              <div class="info">
+                <h2 class="name">{{name}}</h2>
+              </div>
+            </a>
+          </div>
+          {{/projects}}
+        </script>
 
-        </div>
       </div>
     </main>
 

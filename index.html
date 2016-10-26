@@ -3,38 +3,24 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>An Intro to JS Templating</title>
 
-    <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- this is necessary for responsive @media queries to work properly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="mobile-menu.css" />
-    <link rel="stylesheet" type="text/css" href="grid.css" />
-    <link rel="stylesheet" type="text/css" href="basics.css" />
+    <!-- The Title to your website. Shows in the browser tab or window, as well as in search engine results. Not actually on the page anywhere -->
+    <title>YOURNAME’s Portfolio provided from Behance</title>
+
   </head>
 
   <body>
     <header>
-      <nav>
-        <!-- this is our menu that we'll show/hide on skinny screens... -->
-        <ul>
-          <li><a href="index.html">Home?</a></li>
-          <li><a href="#two">Second Thing</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-        <!-- This HTML makes us a little button to show and hide -->
-        <button class="toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
+      <p>How should we assume the header area act for most people?</p>
     </header>
 
     <main>
       <div class="container">
         <h1>Work.</h1>
-        <div id="behance-magix" class="group">
+        <div id="behance-magix">
           <!-- insert some HTML via magic JS -->
             <img src="https://unsplash.it/400/300/?random" />
             <p>This will be erased when javascript draws our new content.</p>
@@ -42,8 +28,8 @@
           <!-- this is the template that each behance thing with use to print to the browser -->
           <script id="project-cards" type="text/template">
             {{#projects}}
-            <div class="project three columns" id="b{{id}}">
-              <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
+            <div class="project" id="b{{id}}">
+              <a href="#{{id}}" data-project-id="{{id}}">
                 <img src="{{covers.404}}" alt="{{name}}" />
                 <div class="info">
                   <h2 class="name">{{name}}</h2>
@@ -57,7 +43,9 @@
       </div>
     </main>
 
-    <footer>copyright, or footer-y stuff, etc. tk</footer>
+    <footer>
+      <p>copyright, or footer-y stuff, etc.</p>
+    </footer>
 
     <div id="dynamic-pages">
       <!-- individual pages will appear to "print" here -->
@@ -76,37 +64,28 @@
     <!-- this is mustache, required for the templating to happen -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
-    <script src="mobilemenu.js"></script>
-    <script src="behance.js"></script>
-
     <script>
+      // your behance user machine name. Take it from your profile url
+      // www.behance.net/userName
+      var userName = 'kristianbjornard'
+
+      // this is your behance APIkey — figure out how to set this up at » URL TO COME
+      var apiKey   = '5T8WWYiQqGy7sJV1sEQIdO2k8CDNDQS7'
+
+      // this url will provide a feed of content for the site based on your userName and apiKey.
       var url = 'https://api.behance.net/v2/users/' + userName + '/projects/?api_key=' + apiKey +'&per_page=25&callback=?';
       /* some issue where no more than 25 can be returned at a time, there are ways to ask for more? https://help.behance.net/hc/communities/public/questions/202357274-Number-of-Behance-API-request-results-limited-to-25- */
+
+      // log url in console to make sure that things are working so far.
       console.log('connected to ' + url + '.');
 
-      var matchingHeights = function() {
-        var pHeight = 0;
-        $('.project').each(function() {
-          var projectID  = $(this).find('a.wrapping').attr('data-project-id');
-          pHeight = pHeight > $(this).height() ? pHeight : $(this).height();
-          console.log('Number ' + projectID + ' is ' + pHeight + ' px tall!');
-        });
-        $('.project').each(function() {
-          $(this).height(pHeight);
-        });
-      }
-
+      // this is where the actual magic happens.
       $.getJSON(url, function(data) {
 
         //mustache for projects
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
-
-        // try to get all the things printing out @ the same height.
-        $('.project img').load(function() {
-          matchingHeights();
-        });
 
         $('.project a').click(function() {
          var projectID  = $(this).attr('data-project-id');

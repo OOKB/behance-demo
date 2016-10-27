@@ -25,7 +25,11 @@
         <img src="https://unsplash.it/400/300/?random" />
         <p>This will be erased when javascript draws our new content. But, you can also put other things here incase the behance API is down or for some other reason the javascript doesn't run/load.</p>
 
-        <!-- this is the template that each behance thing with use to print to the browser -->
+        <!-- this is the template for each project Thumbnail/Title combo -->
+        <!-- ================================================== -->
+        <!-- ================================================== -->
+        <!-- ================================================== -->
+        <!-- ================================================== -->
         <script id="project-cards" type="text/template">
           {{#projects}}
           <div class="project" id="b{{id}}">
@@ -58,10 +62,10 @@
     <!-- ================================================== -->
 
     <!-- this is jquery, needed for a bunch of stuff -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <!-- this is mustache, required for the templating to happen -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
 
     <script>
       // your behance user machine name. Take it from your profile url
@@ -76,23 +80,31 @@
       /* some issue where no more than 25 can be returned at a time, there are ways to ask for more? https://help.behance.net/hc/communities/public/questions/202357274-Number-of-Behance-API-request-results-limited-to-25- */
 
       // log url in console to make sure that things are working so far.
+      // you can view this log output in console in developer tools in your browser.
       console.log('connected to ' + url + '.');
 
       // this is where the actual magic happens.
+      // $.getJSON is a jquery command that asks for JSON from a url and then lets you run functions on it.
       $.getJSON(url, function(data) {
 
-        //mustache for projects
+        //mustache for project list/grid
         var template = $('#project-cards').html();
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
 
         $('.project a').click(function() {
-         var projectID  = $(this).attr('data-project-id');
-         var projectUrl = 'https://api.behance.net/v2/projects/' + projectID + '/?api_key=' + apiKey +'&callback=?';
-         console.log('trying to show ' + projectUrl + '.');
+          // each project has a unique ID, we need it to build our project JSON url
+          var projectID  = $(this).attr('data-project-id');
+          // this then constructs the url for an individual project
+          var projectUrl = 'https://api.behance.net/v2/projects/' + projectID + '/?api_key=' + apiKey +'&callback=?';
+          // then we log the result to the console so we can double check that this is working correctly
+          console.log('trying to show ' + projectUrl + '.');
 
+          // we then run another getJSON request with the newly made individual project url
+          // this will allow us to on the fly generate some “pages” for our projects.
+          // more mustache templating will then happen
           $.getJSON(projectUrl, function(data) {
-            //mustache for projects
+            //mustache for individual project “page”
             var template = $('#project-page').html();
             var info = Mustache.to_html(template, data);
             $('#dynamic-pages').html(info);
@@ -105,6 +117,12 @@
       });
 
     </script>
+
+    <!-- this is the template for our individual projects -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
 
     <script id="project-page" type="text/template">
       <div class="project-page" id="project-{{project.id}}">

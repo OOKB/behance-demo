@@ -21,6 +21,19 @@ Basically, we're providing you a list of projects and you get to decide how to d
 
 As this project evolves more templates, instructions, outcomes, etc. will be created.
 
+## Tools this relies upon
+
+Currently we're using:
+
+- mustache.js
+- jquery
+- behance API
+- font awesome
+
+And that's it.
+
+As we build this out more libraries and themes will be added, other things might be listed here (like list.js or masonry or isotope or tachyons or similar...).
+
 ## Register w/ Behance to get API key
 
 <https://www.behance.net/dev/register>

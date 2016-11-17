@@ -2,6 +2,8 @@
 body {
   background: #EEE;
   color: #333;
+  /**/
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 img {
@@ -12,4 +14,60 @@ img {
 
 .project {
   max-width: 300px;
+}
+
+a {
+  color: #333;
+}
+
+/*******/
+.project-page {
+  color: #EEE;
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 9999999999;
+  background-color: rgba(50,50,50,.8);
+  overflow-y: auto;
+  padding: 3em;
+  border: 1em solid #EEE;
+  text-align:center;
+}
+.project-page * {
+  margin-left: auto;
+  margin-right:auto;
+}
+.project-page .container {
+  max-width: 50em;
+}
+
+.project-page a {
+  color: #EEE;
+}
+
+.project-page button.close {
+  position: fixed;
+  right: 3em;
+  top:3em;
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background: #333;
+  border: none;
+  color: #EEE;
+}
+
+/* easy class to add to <ul>s to get rid of listy stuff */
+.list-reset {
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+
+/* try to keep body from scrolling in the background */
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }

@@ -1,0 +1,15 @@
+/** write your styles in this sheet. **/
+body {
+  background: #EEE;
+  color: #333;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.project {
+  max-width: 300px;
+}

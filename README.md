@@ -20,3 +20,20 @@ The main point: simple, semi-custom display for your behance projects. Get a nic
 Basically, we're providing you a list of projects and you get to decide how to display that list.
 
 As this project evolves more templates, instructions, outcomes, etc. will be created.
+
+## Register w/ Behance to get API key
+
+<https://www.behance.net/dev/register>
+
+- Register your "application" (in this case your app is your website)
+- Copy the API key / Client ID, we'll need this.
+
+You can get back to this by going to <https://www.behance.net/dev/apps>
+
+## Reading JSON
+
+It is helpful to have a JSON viewing plugin installed in your browser to make the JSON feeds easier to navigate. One of these will work if you're using chrome: <https://chrome.google.com/webstore/search/jsonView>. This will work if you're using Firefox: <https://addons.mozilla.org/en-US/firefox/addon/jsonview/>. If you're a Safari user try this: <https://github.com/rfletcher/safari-json-formatter> or <https://github.com/acrogenesis/jsonview-safari>.
+
+Your Behance API JSON feed is findable at `https://api.behance.net/v2/users/ + YOURUSERNAME + /projects/?api_key= + YOURAPIKEY + &per_page=25&callback=?;`
+
+Documentation on the Behance API is found here: <https://www.behance.net/dev/api/endpoints/>

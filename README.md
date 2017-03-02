@@ -5,6 +5,8 @@ This is an experiment into using Behance as a basic content management sysytem t
 current live demos:<br>
 <http://behance.ookb.co/><br>
 <http://www.connormuething.com/>
+<http://www.sallymaier.com/>
+<http://spencenelson.com/#>
 
 Outcomes are severely limited due to the constraints of the tools, and some other overarching ideas:
 

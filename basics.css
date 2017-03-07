@@ -1,39 +1,36 @@
 /** write your styles in this sheet. **/
+
+* {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  background: #EEE;
-  color: #333;
+  background: white;
+  color: black;
   /**/
   font-family: Helvetica, Arial, sans-serif;
 }
 
-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-.project {
-  max-width: 300px;
-}
-
-a {
-  color: #333;
-}
-
-/*******/
+/*** project overlay ***/
 .project-page {
-  color: #EEE;
   position: fixed;
   top:0;
   right:0;
   bottom:0;
   left:0;
   z-index: 9999999999;
-  background-color: rgba(50,50,50,.8);
-  overflow-y: auto;
+  background-color: rgba(255,255,255,.95);
   padding: 3em;
-  border: 1em solid #EEE;
-  text-align:center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .project-page * {
   margin-left: auto;
@@ -42,21 +39,17 @@ a {
 .project-page .container {
   max-width: 50em;
 }
-
-.project-page a {
-  color: #EEE;
-}
-
 .project-page button.close {
-  position: fixed;
-  right: 3em;
-  top:3em;
-  height: 3em;
-  width: 3em;
+  background-color: transparent;
+  border: 2px solid;
   border-radius: 50%;
-  background: #333;
-  border: none;
-  color: #EEE;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  line-height: 3.5rem;
 }
 
 /* easy class to add to <ul>s to get rid of listy stuff */
@@ -70,4 +63,5 @@ a {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+  position: relative;
 }

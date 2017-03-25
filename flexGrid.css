@@ -7,6 +7,7 @@ img {
 
 /*** project grid ***/
 /*** attempting to use flexbox for ease of use in regards to mismatched heights, etc ***/
+/*** http://codepen.io/bjornmeansbear/pen/OpRqEW?editors=0100 ***/
 
 #behance-magix {
   display: -webkit-box;
@@ -35,5 +36,5 @@ img {
 }
 
 .project-page a {
-  color: black;
+  color: white;
 }

@@ -3,10 +3,9 @@
 This is an experiment into using Behance as a basic content management sysytem to power a simple portfolio ... basically templating and styling the JSON output from behance.net using just a simple set of mustache templates.
 
 current live demos:<br>
-<http://behance.ookb.co/><br>
 <http://www.connormuething.com/><br>
 <http://www.sallymaier.com/><br>
-<http://spencenelson.com/#>
+<http://spencenelson.com/>
 
 Outcomes are severely limited due to the constraints of the tools, and some other overarching ideas:
 
@@ -27,10 +26,10 @@ As this project evolves more templates, instructions, outcomes, etc. will be cre
 
 Currently we're using:
 
-- mustache.js
-- jquery
-- behance API
-- font awesome
+- [jquery](http://api.jquery.com/)
+- [behance API](https://www.behance.net/dev/api/endpoints/)
+- [mustache.js](https://github.com/janl/mustache.js)
+- [font awesome](http://fontawesome.io/)
 
 And that's it.
 

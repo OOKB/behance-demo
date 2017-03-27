@@ -1,6 +1,6 @@
 # behance-demo
 
-This is an experiment into using Behance as a basic content management sysytem to power a simple portfolio ... basically templating and styling the JSON output from behance.net using just a simple set of mustache templates. This is a starter kit of files and instructions attempting to use the lowest possible barrier to entry tools. 
+This is an experiment into using Behance as a basic content management sysytem to power a simple portfolio ... basically templating and styling the JSON output from behance.net using just a simple set of mustache templates. This is a starter kit of files and instructions attempting to use the lowest possible barrier to entry tools.
 
 current live demos:<br>
 <http://www.connormuething.com/><br>
@@ -51,3 +51,9 @@ It is helpful to have a JSON viewing plugin installed in your browser to make th
 Your Behance API JSON feed is findable at `https://api.behance.net/v2/users/ + YOURUSERNAME + /projects/?api_key= + YOURAPIKEY + &per_page=25&callback=?;`
 
 Documentation on the Behance API is found here: <https://www.behance.net/dev/api/endpoints/>
+
+## Themes
+
+Currently there are two starter themes in the `layouts`. These are not yet fleshed out themes by any means. However, they do give a basic starter place that has something more going on than just a column of projects. If you've developed a theme that you think others might enjoy, please share it.
+
+More to come.

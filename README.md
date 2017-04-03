@@ -1,5 +1,7 @@
 # behance-demo
 
+Spring 2017 GD2 Project Sheet: sl.ookb.co/hackBehance
+
 This is an experiment into using Behance as a basic content management sysytem to power a simple portfolio ... basically templating and styling the JSON output from behance.net using just a simple set of mustache templates. This is a starter kit of files and instructions attempting to use the lowest possible barrier to entry tools.
 
 Most recent stable release can be found here: https://github.com/OOKB/behance-demo/releases. Most recent version is on top. Currently at `v0.2`. For the new to this stuff, you are probably best off downloading the `.zip` version. 

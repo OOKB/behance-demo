@@ -8,6 +8,7 @@ Most recent stable release can be found here: https://github.com/OOKB/behance-de
 
 current live demos:<br>
 <http://www.connormuething.com/><br>
+<http://milanery.com/><br>
 <http://www.sallymaier.com/><br>
 <http://spencenelson.com/>
 
@@ -47,6 +48,8 @@ As we build this out more libraries and themes will be added, other things might
 - Copy the API key / Client ID, we'll need this.
 
 You can get back to this by going to <https://www.behance.net/dev/apps>
+
+The other thing you need to know from Behance.net is your machine Username. This is what shows up in the URL for your Behance Profile — `https://www.behance.net/YOURUSERNAME`. For example, if my Behance profile url is <https://www.behance.net/kristianbjornard>, that makes my Behance user name `kristianbjornard`.
 
 ## Reading JSON
 

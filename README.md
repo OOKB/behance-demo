@@ -64,3 +64,13 @@ Documentation on the Behance API is found here: <https://www.behance.net/dev/api
 Currently there are two starter themes in the `layouts`. These are not yet fleshed out themes by any means. However, they do give a basic starter place that has something more going on than just a column of projects. If you've developed a theme that you think others might enjoy, please share it.
 
 More to come.
+
+## Support
+
+Behance-kit is maintained mainly by @bjornmeansbear … but also people like you! If you find a bug, report it to the [GitHub Issue Tracker](https://github.com/OOKB/behance-demo/issues). If you've fixed a bug submit a Pull Request and add your fork to the Network Wiki Page.
+
+Visit the Behance Developer docs for help w/ their API and such. Jquery also has a lot of useful documenation on how all of its pieces work. Mustache.js is a little harder to self trouble shoot if you don't get how much of it works, so those are things you can try leaving issues for — or even search places like stack overflow for; the way we're using these tools isn't different from many other implimentations of mustache templates rendering data from a json feed.
+
+Good luck.
+
+

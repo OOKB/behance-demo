@@ -4,6 +4,7 @@
 <p>Most recent stable release can be found here: <a href="https://github.com/OOKB/behance-demo/releases">https://github.com/OOKB/behance-demo/releases</a>. Most recent version is on top. Currently at <code>v0.2</code>. For the new to this stuff, you are probably best off downloading the <code>.zip</code> version. </p>
 <p>current live demos:<br />
 <a href="http://www.connormuething.com/">http://www.connormuething.com/</a><br />
+<a href="http://milanery.com/">http://milanery.com/</a><br />
 <a href="http://www.sallymaier.com/">http://www.sallymaier.com/</a><br />
 <a href="http://spencenelson.com/">http://spencenelson.com/</a></p>
 <p>Outcomes are severely limited due to the constraints of the tools, and some other overarching ideas:</p>
@@ -35,6 +36,7 @@
 <li>Copy the API key / Client ID, we'll need this.</li>
 </ul>
 <p>You can get back to this by going to <a href="https://www.behance.net/dev/apps">https://www.behance.net/dev/apps</a></p>
+<p>The other thing you need to know from Behance.net is your machine Username. This is what shows up in the URL for your Behance Profile — <code>https://www.behance.net/YOURUSERNAME</code>. For example, if my Behance profile url is <a href="https://www.behance.net/kristianbjornard">https://www.behance.net/kristianbjornard</a>, that makes my Behance user name <code>kristianbjornard</code>.</p>
 <h2>Reading JSON</h2>
 <p>It is helpful to have a JSON viewing plugin installed in your browser to make the JSON feeds easier to navigate. One of these will work if you're using chrome: <a href="https://chrome.google.com/webstore/search/jsonView">https://chrome.google.com/webstore/search/jsonView</a>. This will work if you're using Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/jsonview/">https://addons.mozilla.org/en-US/firefox/addon/jsonview/</a>. If you're a Safari user try this: <a href="https://github.com/rfletcher/safari-json-formatter">https://github.com/rfletcher/safari-json-formatter</a> or <a href="https://github.com/acrogenesis/jsonview-safari">https://github.com/acrogenesis/jsonview-safari</a>.</p>
 <p>Your Behance API JSON feed is findable at <code>https://api.behance.net/v2/users/ + YOURUSERNAME + /projects/?api_key= + YOURAPIKEY + &amp;per_page=25&amp;callback=?;</code></p>

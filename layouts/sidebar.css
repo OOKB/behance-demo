@@ -11,7 +11,9 @@ img {
 
 .wrapper {
   width: 20rem;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -36,4 +38,9 @@ body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.project-page {
+  margin-left: 25rem;
+  max-width: 60rem;
 }

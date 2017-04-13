@@ -9,32 +9,31 @@ img {
 /*** attempting to use flexbox for ease of use in regards to mismatched heights, etc ***/
 /*** http://codepen.io/bjornmeansbear/pen/OpRqEW?editors=0100 ***/
 
-#behance-magix {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
+.wrapper {
+  width: 20rem;
+  height: 100vh;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-
-  -webkit-flex-flow: row wrap;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.project {
-  width: 25%;
-  padding: 1em;
-  position: relative;
+body {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.project .image-wrapper {
-  margin: -1em -1em 0;
-}
-
-/*** project overlay ***/
-.project-page {
-  color: white;
-  background-color: rgba(50,50,50,.8);
-}
-
-.project-page a {
-  color: white;
+#behance-magix {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }

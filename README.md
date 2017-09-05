@@ -10,7 +10,8 @@ current live demos:<br>
 <http://www.connormuething.com/><br>
 <http://milanery.com/><br>
 <http://www.sallymaier.com/><br>
-<http://spencenelson.com/>
+<http://spencenelson.com/><br>
+<http://www.isabellevin.com/>
 
 Outcomes are severely limited due to the constraints of the tools, and some other overarching ideas:
 

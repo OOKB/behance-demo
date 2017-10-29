@@ -62,6 +62,15 @@
     <div id="dynamic-pages">
       <!-- individual pages will appear to "print" here -->
     </div>
+    <div id="anOrder" class="hidden">
+      <script id="order" type="text/template">
+        {{#projects}}
+        <div data-project-id="{{id}}">
+          {{id}}
+        </div>
+        {{/projects}}
+      </script>
+    </div>
 
     <!-- All your javascript (other than typekit related stuff) -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -74,6 +83,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- this is mustache, required for the templating to happen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <!-- link to jquery cycle -->
+    <script src="http://malsup.github.io/min/jquery.cycle2.min.js"></script>
     <!-- this makes the year in your footer always the current year -->
     <script>
       // dynamically update the year in the footer (not the best idea, but this works!...)
@@ -108,9 +119,16 @@
         var info = Mustache.to_html(template, data);
         $('#behance-magix').html(info);
 
+        var template2 = $('#order').html();
+        var info2 = Mustache.to_html(template2, data);
+        $('#anOrder').html(info2);
+
         $('.project a').click(function() {
+          $(this).parent().addClass("active");
           // each project has a unique ID, we need it to build our project JSON url
           var projectID  = $(this).attr('data-project-id');
+          var nextProjectID  = $(this).parent().attr('data-project-id');
+          var prevProjectID  = $(this).attr('data-project-id');
 
           // this then constructs the url for an individual project
           var projectUrl = 'https://api.behance.net/v2/projects/' + projectID + '/?api_key=' + apiKey +'&callback=?';
@@ -132,11 +150,18 @@
             var info = Mustache.to_html(template, data);
             $('#dynamic-pages').html(info);
 
+            $('.media_collection .slideshow').cycle({
+              fx: "scrollHorz",
+              slides: ".slide",
+              pager: ".cycle-pager"
+            });
+
             $('.project-page button.close').click(function() {
               $(this).parent().hide();
               $('body').removeClass('stop-scrolling');
               console.log('overlay should go away and body should go back to scrolling');
             });
+
           });
         });
       });
@@ -151,6 +176,11 @@
 
     <script id="project-page" type="text/template">
       <div class="project-page" id="project-{{project.id}}">
+        <div class="controls">
+          <button id="next"><i class="fa fa-hand-o-left fa-2x"></i></button>
+          <button id="prev"><i class="fa fa-hand-o-right fa-2x"></i></button>
+        </div>
+
         <div class="container">
 
           <h1>{{project.name}}</h1>
@@ -166,6 +196,18 @@
                 {{/sizes}}
                 {{#text_plain}}<p>{{text_plain}}</p>{{/text_plain}}
                 {{#original_embed}}<p>{{{original_embed}}}</p>{{/original_embed}}
+                <div class="slideshow">
+                  {{#components}}
+                    <div class="slide">
+                      {{#sizes}}<img src="
+                        {{#sizes.max_1200}}{{sizes.max_1200}}{{/sizes.max_1200}}
+                        {{^sizes.max_1200}}{{sizes.original}}{{/sizes.max_1200}}
+                      " />
+                      {{/sizes}}
+                    </div>
+                  {{/components}}
+                </div>
+                <div class="cycle-pager"></div>
               </li>
             {{/project.modules}}
           </ul>
@@ -177,8 +219,31 @@
           </p>
         </div>
         <button class="close"><i class="fa fa-times fa-2x"></i></button>
+
       </div>
     </script>
+
+
+<style>
+
+  .slideshow, .slideshow * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.slideshow { width: 100%; min-width: 200px; margin: auto; padding: 0; }
+
+/* images */
+.slideshow img {
+    width: 100%;
+    position: static;
+    display: block;
+}
+
+/* divs */
+.slideshow div {
+    position: absolute; top: 0; left: 0;
+    width: 100%; padding: 0;
+  display:block;
+}
+
+    </style>
 
   </body>
 </html>
